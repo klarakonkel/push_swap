@@ -6,7 +6,7 @@
 /*   By: kkonkel <kkonkel@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:08:01 by kkonkel           #+#    #+#             */
-/*   Updated: 2024/03/27 09:44:59 by kkonkel          ###   ########.fr       */
+/*   Updated: 2024/04/03 15:43:34 by kkonkel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 int	main(int argc, char *argv[])
 {
-	int	i;
+	//int	i;
+	t_node	*a; //pointer to stack A
+	//t_node	*b; //pointer to stack B
 
-	i = 0;
+	//i = 0;
+	a = NULL;
+	//b = NULL;
+	//stackn = (t_list *)malloc(sizeof(t_list));
 	if (argc < 2)
+	{
+	//	free(stackn);
 		return (0); //subject! NULL?
+	}
 	/*if (argc == 2) // what if only one int is passed as a parameter?
 	{
 		return(argv[1]);
@@ -32,12 +40,14 @@ int	main(int argc, char *argv[])
 	else
 	{
 		printf("correct arguments\n");
-		while (argv[++i])
-		{
-			insert_back(ft_atoi(argv[i]));
-		}
+		//stack_init_fill(argv, stack);
+		stack_init(argv, &a);
+		//while (argv[++i])
+		//{
+		//	add_node(ft_atoi(argv[i])); //the first argument is at the top of the stack
+		//}
 	}
-	print_list();
+	print_list(&a);
 	return (0);
 }
 int	take_strings()

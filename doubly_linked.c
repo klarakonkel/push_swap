@@ -2,19 +2,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	insert_front();
-void	insert_back(int content);
-void	print_list();
-void	delete_back();
+//void	insert_front();
+void	add_node(t_node **stack_head, int content);
+void	print_list(t_node **stack_head);
+void	delete_back(t_node **stack_head);
 int		ft_atoi(const char *str);
 
-struct node
-{
-	int	data;
-	struct node *next;
-	struct node *prev;
-};
-struct node *head; //head is a variable declared globally, outside of any function, so it is accessible from any function within the file
+//struct node *head; //head is a variable declared globally, outside of any function, so it is accessible from any function within the file
 /*
 int	main(int argc, char *argv[])
 {
@@ -27,19 +21,19 @@ int	main(int argc, char *argv[])
 			return (-1);
 		while (argv[++i])
 		{
-			insert_back(ft_atoi(argv[i]));
+			add_node(ft_atoi(argv[i]));
 		}
 
 print_list();
 delete_back();
 print_list();
 }*/
-
-void	insert_front()
+/*
+void	insert_front() //fix for head
 {
-	struct node *ptr;
+	t_node *ptr;
 	int	number;
-	ptr = (struct node *)malloc(sizeof(struct node));
+	ptr = (t_node *)malloc(sizeof(t_node));
 	if  (!ptr)
 		return ;
 	else
@@ -47,80 +41,78 @@ void	insert_front()
 		printf("enter node value\n");
 		scanf("%d", &number);
 	}
-
 	if (head == 0)
 	{
 		ptr->next = 0;
 		ptr->prev = 0;
-		ptr->data = number;
+		ptr->content = number;
 		head = ptr;
 	}
-
 	else
 	{
-		ptr->data = number;
+		ptr->content = number;
 		ptr->prev = NULL;
 		ptr->next = head;
 		head->prev = ptr;
 		head=ptr;
 	}
 	printf("done\n");
-}
+}*/
 
-void	print_list()
+void	print_list(t_node **stack_head)
 {
-	struct node *ptr;
+	t_node *ptr;
 	printf("the list contains:\n");
-	ptr = head;
+	ptr = *stack_head;
 	while (ptr != 0)
 	{
-		printf("%d\n", ptr->data);
+		printf("%d\n", ptr->content);
 		ptr = ptr->next;
 	}
 }
 
-void	insert_back(int content)
+void	add_node(t_node **stack_head, int content) //takes a pointer to the head of the stack
 {
-	struct node *ptr;
-	struct node *temp;
-	ptr = (struct node *)malloc(sizeof(struct node));
+	t_node *node;
+	t_node *temp;
+	node = malloc(sizeof(t_node));
 
-	if  (!ptr)
+	if  (!stack_head || !node)
 		return ;
-	ptr->data = content;
-		if (head == 0)
+	node->content = content;
+	node->next = NULL;
+	printf("%d\n", node->content);
+		if (!(*stack_head))
 		{
-			ptr->next = 0;
-			ptr->prev = 0;
-			head = ptr;
+			*stack_head = node;
+			node->prev = 0; //well NULL actually but Mac
 		}
 		else
 		{
-			temp = head;
+			temp = *stack_head;
 			while (temp->next != NULL)
 			{
 				temp = temp->next; //going to the last element of the list
 			}
-			temp->next = ptr;
-			ptr->prev = temp;
-			ptr->next = NULL;
+			temp->next = node;
+			node->prev = temp;
 		}
 	printf("done\n");
 }
 
-void	delete_back()
+void	delete_back(t_node **stack_head)
 {
-	struct node *ptr;
-	if (head == NULL)
+	t_node *ptr;
+	if (!*stack_head)
 		return ;
-	else if (head->next == NULL)
+	else if ((*stack_head)->next == NULL)
 	{
-		head = NULL;
-		free(head);
+		*stack_head = NULL;
+		free(*stack_head);
 	}
 	else 
 	{
-		ptr = head;
+		ptr = *stack_head;
 		while (ptr->next != NULL)
 		{
 			ptr = ptr->next;
