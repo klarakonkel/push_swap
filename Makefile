@@ -6,7 +6,7 @@
 #    By: kkonkel <kkonkel@student.42berlin.de>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 14:03:24 by kkonkel           #+#    #+#              #
-#    Updated: 2024/03/27 13:14:41 by kkonkel          ###   ########.fr        #
+#    Updated: 2024/04/04 16:10:48 by kkonkel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap.a
 LIBFT_DIR = best_libft
 C_FLAGS = -Wextra -Werror -Wall -g
 
-SRC = take_args.c doubly_linked.c stack_init.c
+SRC = take_args.c doubly_linked.c stack_init.c operations.c
 
 OBJ = $(SRC:.c=.o)
 

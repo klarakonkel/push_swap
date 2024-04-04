@@ -6,7 +6,7 @@
 /*   By: kkonkel <kkonkel@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:08:01 by kkonkel           #+#    #+#             */
-/*   Updated: 2024/04/03 15:43:34 by kkonkel          ###   ########.fr       */
+/*   Updated: 2024/04/04 19:49:09 by kkonkel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	main(int argc, char *argv[])
 {
 	//int	i;
 	t_node	*a; //pointer to stack A
-	//t_node	*b; //pointer to stack B
+	t_node	*b; //pointer to stack B
 
 	//i = 0;
 	a = NULL;
-	//b = NULL;
+	b = NULL;
 	//stackn = (t_list *)malloc(sizeof(t_list));
 	if (argc < 2)
 	{
@@ -48,6 +48,20 @@ int	main(int argc, char *argv[])
 		//}
 	}
 	print_list(&a);
+	swap(&a);
+	printf("after swapping ");
+	print_list(&a);
+	rotate(&a);
+	printf("after rotating ");
+	print_list(&a);	
+	rev_rotate(&a);
+	printf("after rotating back ");
+	print_list(&a);
+	push(&a, &b);
+	printf("a after pushing ");
+	print_list(&a);
+	printf("b after pushing ");
+	print_list(&b);
 	return (0);
 }
 int	take_strings()

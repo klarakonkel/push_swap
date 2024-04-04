@@ -6,7 +6,7 @@
 /*   By: kkonkel <kkonkel@student.42berlin.de>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 12:46:25 by kkonkel           #+#    #+#             */
-/*   Updated: 2024/04/03 17:53:05 by kkonkel          ###   ########.fr       */
+/*   Updated: 2024/04/04 20:01:13 by kkonkel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ void	delete_back(t_node **stack_head);
 int		stack_size(char *argv[]);
 void	stack_init(char *argv[], t_node **stack_head);
 //void	stack_init_fill(char *argv[], t_stack *stack);
+void	swap(t_node **stack_head);
+void	push(t_node **origin_stack_head, t_node **dest_stack_head);
+void	rotate(t_node **stack_head);
+void	rr(t_node **stack_head_a, t_node **stack_head_b);
+void	rev_rotate(t_node **stack_head);
+void	rrr(t_node **stack_head_a, t_node **stack_head_b);
 #endif
